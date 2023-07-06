@@ -14,4 +14,4 @@ app.get('*', (req, res) => {
 })
 app.listen(process.env.PORT)
 
-app.listen(3000)
+app.listen(3002)
