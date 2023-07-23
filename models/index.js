@@ -6,4 +6,5 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true
 })
 
+module.exports.Comment = require('./comments')
 module.exports.Place = require('./places')
