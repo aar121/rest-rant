@@ -27,6 +27,15 @@ function edit_form(data) {
               name="pic"
             />
           </div>
+          <div className="form-group col-sm-4">
+            <label htmlFor="founded">Founded</label>
+            <input
+              className="form-control"
+              id="founded"
+              name="founded"
+              value={data.place.founded}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="city">City</label>
             <input
