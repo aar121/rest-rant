@@ -2,6 +2,7 @@ const React = require("react");
 const Def = require("../default");
 
 function show(data) {
+  let stars = "";
   let comments = <h3 className="inactive">No comments yet!</h3>;
   console.log(data.place.comments);
   //if (data.place.comments.length) {
@@ -18,25 +19,21 @@ function show(data) {
   //     );
   //   });
   // }
-  let rating = <h3 className="inactive">Not yet rated</h3>;
   if (data.place.comments.length) {
-    let sumRatings = data.place.comments.reduce((tot, c) => {
-      return tot + c.stars;
-    }, 0);
-    let averageRating = Math.round(sumRatings / data.place.comments.length);
-    let stars = "";
+    let averageRating = Math.round(data.place.rating);
     for (let i = 0; i < averageRating; i++) {
-      stars += "â­ï¸";
+      stars += "⭐";
     }
-    rating = <h3>{stars} stars</h3>;
   }
   return (
     <Def>
       <main>
         <div className="place-1">
           <h1>{data.place.name}</h1>
-          <h2>Rating</h2>
-          <p>Not Rated</p>
+          <p>
+            <h4>Rating</h4>
+            {stars} / 5
+          </p>
           <p className="text-center">{data.place.cuisines}</p>
           <img src={data.place.pic} alt={data.place.name} />
           <h3 className="text-center">
@@ -51,7 +48,7 @@ function show(data) {
             {" "}
             <h2>Comments</h2>
             {data.place.comments.length &&
-              data.place.comments.map((c) => {
+              data.place.comments.map((c, index) => {
                 return (
                   <div className="border">
                     <h2 className="rant">
@@ -105,7 +102,6 @@ function show(data) {
               min="0"
               max="5"
               step="0.5"
-              {...rating}
             ></input>
           </div>
           <div>

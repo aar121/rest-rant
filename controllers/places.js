@@ -91,8 +91,6 @@ router.get('/:id/edit', (req, res) => {
 
 
 router.post("/:id/comment", (req, res) => {
-  //console.log(req.body);
-  console.log("req.params.id", req.params.id)
   db.Place.findById(req.params.id)
     .then((place) => {
       db.Comment.create(req.body)
